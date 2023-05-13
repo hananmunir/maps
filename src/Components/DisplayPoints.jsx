@@ -35,7 +35,7 @@ const DisplayPoints = () => {
       lat: 31.4427071,
       lng: 74.2716663,
     },
-    zoom: 7,
+    zoom: 13,
   };
 
   return (
