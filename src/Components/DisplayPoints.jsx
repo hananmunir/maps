@@ -10,7 +10,7 @@ const DisplayPoints = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/Points/points.csv");
+      const response = await fetch("/Points/lon_lat.csv");
       const text = await response.text();
 
       // Parse the CSV data using Papa Parse
@@ -24,12 +24,13 @@ const DisplayPoints = () => {
       }));
 
       // Set the markers state with the parsed data
-      setCoordinates(parsedMarkers.slice(0, 1000));
+      setCoordinates(parsedMarkers.slice(0, 774));
     };
 
     fetchData();
   }, []);
 
+  console.log("coordinate", coordinates);
   const defaultProps = {
     center: {
       lat: 31.4427071,
@@ -45,7 +46,7 @@ const DisplayPoints = () => {
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        {coordinates.map((coordinate) => (
+        {coordinates?.map((coordinate) => (
           <Marker
             key={coordinate.id}
             lat={coordinate.Lat}
