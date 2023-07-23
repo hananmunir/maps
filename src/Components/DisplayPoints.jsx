@@ -4,7 +4,6 @@ import GoogleMapReact from "google-map-react";
 
 const Marker = () => <img src='/marker-icon.png' alt='marker' />;
 
-//AIzaSyA9E6uWz77o_rcaq9v8hVtIiYRB7h2oE6U
 const DisplayPoints = () => {
   const [coordinates, setCoordinates] = useState([]);
 
@@ -23,8 +22,9 @@ const DisplayPoints = () => {
         Lon: parseFloat(row.Lon),
       }));
 
+      console.log(parsedMarkers);
       // Set the markers state with the parsed data
-      setCoordinates(parsedMarkers.slice(0, 774));
+      setCoordinates(parsedMarkers);
     };
 
     fetchData();
@@ -48,9 +48,9 @@ const DisplayPoints = () => {
       >
         {coordinates?.map((coordinate) => (
           <Marker
-            key={coordinate.id}
-            lat={coordinate.Lat}
-            lng={coordinate.Lon}
+            key={coordinate?.id}
+            lat={coordinate?.Lat}
+            lng={coordinate?.Lon}
           />
         ))}
       </GoogleMapReact>
